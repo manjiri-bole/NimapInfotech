@@ -1,0 +1,45 @@
+<perfect-scrollbar style="max-width: 800px; max-height: 600px;">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="m-form" [formGroup]="categoryForm">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <mat-card-title>Category Details</mat-card-title>
+                    </mat-card-header>
+                    <mat-divider></mat-divider>
+                    <mat-card-content>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input matInput formControlName="CategoryName" placeholder="Category Name" required>
+                                    <mat-error *ngFor="let validation of validationMessages.CategoryName">
+                                        <span
+                                            *ngIf="categoryForm.get('CategoryName').hasError(validation.type) &&
+                                        (categoryForm.get('CategoryName').dirty || categoryForm.get('CategoryName').touched)">{{validation.message}}
+                                        </span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="row">
+                <div class="col-md-8"></div>
+
+                <div class="col-md-2">
+                    <button mat-stroked-button color="warn" class="cancal" (click)="onCancel($event)">Cancel</button>
+                </div>
+                <div class="col-md-2">
+                    <button mat-raised-button color="primary" class="save" [disabled]="!categoryForm.dirty"
+                        (click)="onSave()" *ngIf="openDialogInMode === 'edit'">Save</button>
+                </div>
+
+            </div>
+        </mat-card-actions>
+        </mat-card>
+        </form>
+    </div>
+    </div>
+</perfect-scrollbar>

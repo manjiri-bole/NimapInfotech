@@ -1,0 +1,64 @@
+<perfect-scrollbar style="max-width: 800px; max-height: 600px;">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="m-form" [formGroup]="productForm">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <mat-card-title>Products Details</mat-card-title>
+                    </mat-card-header>
+                    <mat-divider></mat-divider>
+                    <mat-card-content>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field>
+                                    <input matInput formControlName="ProductName"
+                                        (blur)="productForm.get('ProductName').value? productForm.get('ProductName').setValue(productForm.get('ProductName').value.trim()):1"
+                                        placeholder="Products Name" required>
+                                    <mat-error *ngFor="let validation of validationMessages.ProductName">
+                                        <span
+                                            *ngIf="productForm.get('ProductName').hasError(validation.type) &&
+                                        (productForm.get('ProductName').dirty || productForm.get('ProductName').touched)">{{validation.message}}
+                                        </span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <ng-multiselect-dropdown formControlName="CategoryName" [data]="filteredCategory"
+                                    [settings]="settings" [placeholder]="'Category Name'" [(ngModel)]="selectedItems"
+                                    (onSelect)="onItemSeletCategory($event)">
+                                </ng-multiselect-dropdown>
+
+                                <mat-error *ngFor="let validation of validationMessages.CategoryName">
+                                    <span
+                                        *ngIf="productForm.get('CategoryName').hasError(validation.type) &&
+                                    (productForm.get('CategoryName').dirty || productForm.get('CategoryName').touched)">{{validation.message}}
+                                    </span>
+                                </mat-error>
+
+                            </div>
+                        </div>
+                    </mat-card-content>
+
+                    <mat-card-actions>
+                        <div class="row" *ngIf="!this.objProductUpdate">
+                            <div class="col-md-8"></div>
+
+                            <div class="col-md-2">
+                                <button mat-stroked-button color="warn" (click)="onCancel($event)"
+                                    class="cancal">Cancel</button>
+                            </div>
+                            <div class="col-md-2">
+                                <button mat-raised-button color="primary" (click)="onSave()"
+                                    [disabled]="!productForm.valid" *ngIf="openDialogInMode === 'edit'"
+                                    [class.spinner]="isFormSaving" class="save">Save</button>
+                            </div>
+                        </div>
+                    </mat-card-actions>
+                </mat-card>
+            </form>
+        </div>
+    </div>
+</perfect-scrollbar>

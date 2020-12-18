@@ -1,0 +1,91 @@
+@import '../../../shared/theme/conf';
+.login-container {
+    background: url("../../../../assets/images/bg/main-bg.png") center center no-repeat;
+    //background-color: #282a3c;
+    background-size: cover;
+    height: 100%;
+}
+.login-inner-container{
+    background: rgba(33, 31, 31, 0.8);
+    width: 100%;
+    height: 100%;
+}
+.form-field-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .login-tab{
+      width:150px;
+  }
+  .mat-icon-login{
+      position: relative;
+      top:5px;
+      margin-right:10px;
+  }
+  .login-btn{
+      text-align: center
+  }
+  .login-title{
+    font-weight: 100;
+    font-size: 24px;
+    text-align: left;
+    margin: 0px;
+    padding: 10px 0 10px;
+  }
+  .form-field-container > * {
+    width: 100%;
+  }
+   .card{
+    background-color:rgba(255, 255, 255, 0.8)
+   }
+
+.login-page {
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    margin: auto;
+    height: 300px;
+    .login-card{
+        padding:23px 35px;
+        /* height:200px */
+    }
+    .form-group {
+        padding: 0;
+    }
+    .form-label {
+        display: block;
+        color: $fonts-color;
+        padding: 0 10px;
+    }
+    span.form-label {
+        color: lighten($fonts-color, 30%);
+    }
+    .input-group {
+        padding: 0;
+        margin: 25px 0;
+    }
+    .form-control {
+        background: transparent;
+        color: $fonts-color;
+    }
+    .input-group-addon {
+        background: transparent;
+        border: none;
+        font-size: $lg-text;
+        color: lighten($fonts-color, 20%);
+    }
+    .btn {
+        width: 100%;
+    }
+    .btn-link {
+        margin: 10px 0;
+        color: lighten($fonts-color, 30%);
+    }
+    input.ng-invalid.ng-touched{
+        border-color: red;
+    }
+}
